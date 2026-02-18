@@ -1,14 +1,8 @@
 import random
-import importlib.util
 from pathlib import Path
 from typing import List
 
-_enum_path = Path(__file__).resolve().with_name("enum.py")
-_enum_spec = importlib.util.spec_from_file_location("card_enum", _enum_path)
-_enum_module = importlib.util.module_from_spec(_enum_spec)
-_enum_spec.loader.exec_module(_enum_module)
-Rank = _enum_module.Rank
-Suit = _enum_module.Suit
+from card_enum import Rank, Suit
 
 ASSETS_DIR = Path(__file__).resolve().parents[2] / "assets"
 RANK_TO_ASSET_NAME = {
