@@ -30,11 +30,11 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
-        working-directory: frontend
+        working-directory: blackjack-game/frontend
         run: npm ci
 
       - name: Build frontend
-        working-directory: frontend
+        working-directory: blackjack-game/frontend
         env:
           VITE_API_BASE: ${{ vars.VITE_API_BASE }}
         run: npm run build -- --base=/${{ github.event.repository.name }}/
@@ -43,7 +43,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist
+          path: blackjack-game/frontend/dist
 
   deploy:
     environment:
